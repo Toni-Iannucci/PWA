@@ -1,18 +1,18 @@
 let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/13.1.1/data/fr_FR/champion.json';
 let container = document.getElementById('container');
 // Variables pour la popin
-let popinContainer =window.document.createElement('div');
-    let popinContent = window.document.createElement('div');
-    let imageChampionPopin = window.document.createElement('img');
-    let nameChampionPopin = window.document.createElement('h2');
-    let titleChampionPopin = window.document.createElement('p');
-    let descriptionChampionPopin = window.document.createElement('p');
-    let boutonFermer =window.document.createElement('button');
+// let popinContainer =window.document.createElement('div');
+//     let popinContent = window.document.createElement('div');
+//     let imageChampionPopin = window.document.createElement('img');
+//     let nameChampionPopin = window.document.createElement('h2');
+//     let titleChampionPopin = window.document.createElement('p');
+//     let descriptionChampionPopin = window.document.createElement('p');
+//     let boutonFermer =window.document.createElement('button');
 
 
 
 
-
+// Récupérer et Afficher les données de l'API 
 async function getDataChampions(){
     try{
         const response = await fetch(urlChampions);
@@ -70,7 +70,12 @@ async function getDataChampions(){
     }
 }
 getDataChampions();
+// Fin de la récupération et de l'affichage des données de l'API 
 
+
+// Mise en place de la popin
+
+// Gestion de l'ouverture
 function openPopin() {
  
     // popinContent.appendChild(popinContainer);
@@ -80,35 +85,56 @@ function openPopin() {
     // popinContent.appendChild(descriptionChampionPopin);
     // popinContent.appendChild(boutonFermer);
     // popinContainer.style.display = "block";
-    console.log('popinouverte')
+    let cards = document.querySelectorAll('.cards');
+let popin = document.getElementById('popin');
+let popinContent = document.getElementById('popinContent');
+let closePopinbutton = document.getElementById('closePopin');
+    // console.log('popinouverte')
+    cards.forEach(card => {
+        card.addEventListener('click', function() {
+        //   popinContent.innerHTML = this.innerHTML;
+        //   popin.style.display = 'block';
+          console.log('coucou')
+        });
+      });
 }
+let cards = document.querySelectorAll('.cards');
+let popin = document.getElementById('popin');
+let popinContent = document.getElementById('popinContent');
+let closePopinbutton = document.getElementById('closePopin');
 
-function closePopin(){
-    popinContainer.style.display = "none";
-}
+ cards.forEach(card => {
+    card.addEventListener('click', function() {
+      popinContent.innerHTML = this.innerHTML;
+      popin.style.display = 'block';
+    });
+  });
+
+// window.onload=function(){
+//     for (var i = 0; i < buttonOpen.length; i++) {
+//         buttonOpen[i].addEventListener("click", openPopin)
+            
+//         };
+//     }
+
+
+
 
 
 // Test pour chacune des popIn
-let buttonOpen = document.getElementsByClassName('boutonPopinOuvrir');
-console.log(buttonOpen)
+
+
 
 // Attendre que tout charge 
-window.onload=function(){
-   
-  
-for (var i = 0; i < buttonOpen.length; i++) {
-    buttonOpen[i].addEventListener("click", function() {
-        console.log('Popin Ouverte')
-    })};
-}
 
-boutonFermer.addEventListener("click", closePopin);
+
+
 
 // Fermer Popin quand échap
-window.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-      closePopin();
-    }
-  });
+// window.addEventListener("keydown", function(event) {
+//     if (event.key === "Escape") {
+//       closePopin();
+//     }
+//   });
 
 
