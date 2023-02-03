@@ -42,10 +42,12 @@ async function getDataChampions(){
                 let nameChampion = window.document.createElement('h2');
                 let titleChampion = window.document.createElement('p');
                 let boutonOuvrir = window.document.createElement('button');
-                // Mettre une classe sur les cards
+
+                // Mise en place attributs
                 cardChampion.classList.add('cards');
                 boutonOuvrir.classList.add('boutonPopin');
                 imageChampion.alt="imageChampion";
+
                 // Mise en place des données
                 imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/${championsData.data[element].image.full}`
                 nameChampion.innerHTML= `${championsData.data[element].name}`;
@@ -60,11 +62,6 @@ async function getDataChampions(){
                 cardChampion.appendChild(boutonOuvrir);
                 
                 
-                //  console.log(`Ceci est le nom du champion ${championsData.data[element].name} et ceci est son titre ${championsData.data[element].title}`);
-                //  console.log(`et voici sa description ${championsData.data[element].blurb}`);
-                // container += `<p>Ceci est le nom du champion ${championsData.data[element].name} et ceci est son titre ${championsData.data[element].title}</p>`;
-                // container.appendChild(paragraphe);
-                // paragraphe.innerHTML = `Ceci est le nom du champion ${championsData.data[element].name} et ceci est son titre ${championsData.data[element].title}`
 
             }
         }
@@ -90,7 +87,7 @@ function closePopin(){
     popinContainer.style.display = "none";
 }
 
-
+boutonFermer.addEventListener("click", openPopin);
 boutonFermer.addEventListener("click", closePopin);
 
 // Fermer Popin quand échap
