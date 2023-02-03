@@ -10,10 +10,10 @@
     justify-content: center;
     margin: 4%;
 }
-.cards img{
+.card img{
     border-radius: 50%;
 }
-.cards{
+.card{
     background-color: #023047;
     height: 300px;
     border-radius:20px;
@@ -21,14 +21,17 @@
     place-items: center;
     gap: 4px;
 }
-.cards h2{
+.card h2{
     text-align: center;
     color: white;
 }
-.cards p {
+.card p {
     text-align: center;
     color: white;
 }
 #popin{
     display: none;
+}
+.card{
+    cursor: pointer;
 }

@@ -43,7 +43,7 @@ async function getDataChampions(){
                 let button = window.document.createElement('button');
 
                 // Mise en place attributs
-                cardChampion.classList.add('cards');
+                cardChampion.classList.add('card');
                 button.classList.add('boutonPopinOuvrir');
                 imageChampion.alt="imageChampion";
 
@@ -85,7 +85,7 @@ function openPopin() {
     // popinContent.appendChild(descriptionChampionPopin);
     // popinContent.appendChild(boutonFermer);
     // popinContainer.style.display = "block";
-    let cards = document.querySelectorAll('.cards');
+    let cards = document.querySelectorAll('.card');
 let popin = document.getElementById('popin');
 let popinContent = document.getElementById('popinContent');
 let closePopinbutton = document.getElementById('closePopin');
@@ -98,17 +98,22 @@ let closePopinbutton = document.getElementById('closePopin');
         });
       });
 }
-let cards = document.querySelectorAll('.cards');
+// Attendre chargement du contenue 
+window.onload=function(){
+let cards = document.querySelectorAll('.card');
 let popin = document.getElementById('popin');
 let popinContent = document.getElementById('popinContent');
 let closePopinbutton = document.getElementById('closePopin');
-
+// récup les élements pour chaque carte
  cards.forEach(card => {
     card.addEventListener('click', function() {
       popinContent.innerHTML = this.innerHTML;
       popin.style.display = 'block';
+      console.log('coucou')
     });
-  });
+  })
+};
+
 
 // window.onload=function(){
 //     for (var i = 0; i < buttonOpen.length; i++) {
