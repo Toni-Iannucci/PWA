@@ -47,52 +47,42 @@ getDataChampions();
 
 
 // Gestion de l'ouverture
-function openPopin() {
-    popinContent.innerHTML = this.innerHTML;
-    popin.style.display = 'block';
-    console.log('coucou')
-}
 
-// Attendre chargement du contenue 
+
 window.onload=function(){
 let cards = document.querySelectorAll('.card');
 let popin = document.getElementById('popin');
 let popinContent = document.getElementById('popinContent');
 let closePopinbutton = document.getElementById('closePopin');
 
+
 // récup les élements pour chaque carte
  cards.forEach(card => {
-    card.addEventListener('click', function() {
-      popinContent.innerHTML = this.innerHTML;
-      popin.style.display = 'block';
-      console.log('coucou')
-    });
+    card.addEventListener('click', openPopin)
   })
+  //Fermeture de la PopIn
   window.addEventListener("keydown", function(event) {
         if (event.key === "Escape") {
             console.log('fermer')
            closePopin();
          }
       })
+      closePopinbutton.addEventListener('click',closePopin)
 };
 
-
-
-
+// Fonction pour l'ouverture et la fermeture de la PopIn
 function closePopin(){
     popin.style.display = 'none';
+}
+function openPopin() {
+    popinContent.innerHTML = this.innerHTML;
+    popin.style.display = 'block';
+    console.log('coucou')
 }
 
 
 
 
 
-
-// Fermer Popin quand échap
-// window.addEventListener("keydown", function(event) {
-//     if (event.key === "Escape") {
-//       closePopin();
-//     }
-//   });J
 
 
