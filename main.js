@@ -40,6 +40,7 @@ async function getDataChampions(){
                 let imageChampion = window.document.createElement('img');
                 let nameChampion = window.document.createElement('h2');
                 let titleChampion = window.document.createElement('p');
+                let descriptionChampionPopin = window.document.createElement('p');
                 let button = window.document.createElement('button');
 
                 // Mise en place attributs
@@ -77,33 +78,18 @@ getDataChampions();
 
 // Gestion de l'ouverture
 function openPopin() {
- 
-    // popinContent.appendChild(popinContainer);
-    // popinContent.appendChild(imageChampionPopin);
-    // popinContent.appendChild(nameChampionPopin);
-    // popinContent.appendChild(titleChampionPopin);
-    // popinContent.appendChild(descriptionChampionPopin);
-    // popinContent.appendChild(boutonFermer);
-    // popinContainer.style.display = "block";
-    let cards = document.querySelectorAll('.card');
-let popin = document.getElementById('popin');
-let popinContent = document.getElementById('popinContent');
-let closePopinbutton = document.getElementById('closePopin');
-    // console.log('popinouverte')
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-        //   popinContent.innerHTML = this.innerHTML;
-        //   popin.style.display = 'block';
-          console.log('coucou')
-        });
-      });
+    popinContent.innerHTML = this.innerHTML;
+    popin.style.display = 'block';
+    console.log('coucou')
 }
+
 // Attendre chargement du contenue 
 window.onload=function(){
 let cards = document.querySelectorAll('.card');
 let popin = document.getElementById('popin');
 let popinContent = document.getElementById('popinContent');
 let closePopinbutton = document.getElementById('closePopin');
+
 // récup les élements pour chaque carte
  cards.forEach(card => {
     card.addEventListener('click', function() {
@@ -112,25 +98,22 @@ let closePopinbutton = document.getElementById('closePopin');
       console.log('coucou')
     });
   })
+  window.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            console.log('fermer')
+           closePopin();
+         }
+      })
 };
 
 
-// window.onload=function(){
-//     for (var i = 0; i < buttonOpen.length; i++) {
-//         buttonOpen[i].addEventListener("click", openPopin)
-            
-//         };
-//     }
 
 
+function closePopin(){
+    popin.style.display = 'none';
+}
 
 
-
-// Test pour chacune des popIn
-
-
-
-// Attendre que tout charge 
 
 
 
@@ -140,6 +123,6 @@ let closePopinbutton = document.getElementById('closePopin');
 //     if (event.key === "Escape") {
 //       closePopin();
 //     }
-//   });
+//   });J
 
 
