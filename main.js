@@ -49,14 +49,14 @@ async function getDataChampions(){
                 imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/${championsData.data[element].image.full}`
                 nameChampion.innerHTML= `${championsData.data[element].name}`;
                 titleChampion.innerHTML= `${championsData.data[element].title}`;
-                bouton.innerHTML="Ouvrir";
+                boutonOuvrir.innerHTML="Ouvrir";
 
                 // Mise en place des parents et enfants
                 container.appendChild(cardChampion);
                 cardChampion.appendChild(imageChampion);
                 cardChampion.appendChild(nameChampion);
                 cardChampion.appendChild(titleChampion);
-                cardChampion.appendChild(bouton);
+                cardChampion.appendChild(boutonOuvrir);
                 
                 
                 //  console.log(`Ceci est le nom du champion ${championsData.data[element].name} et ceci est son titre ${championsData.data[element].title}`);
@@ -90,5 +90,5 @@ function closePopin(){
     popinContainer.style.display = "none";
 }
 
-boutonOuvrir.addEventListener("click", openPopin);
+
 boutonFermer.addEventListener("click", closePopin);
