@@ -1,16 +1,5 @@
 let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/13.1.1/data/fr_FR/champion.json';
 let container = document.getElementById('container');
-// Variables pour la popin
-// let popinContainer =window.document.createElement('div');
-//     let popinContent = window.document.createElement('div');
-//     let imageChampionPopin = window.document.createElement('img');
-//     let nameChampionPopin = window.document.createElement('h2');
-//     let titleChampionPopin = window.document.createElement('p');
-//     let descriptionChampionPopin = window.document.createElement('p');
-//     let boutonFermer =window.document.createElement('button');
-
-
-
 
 // Récupérer et Afficher les données de l'API 
 async function getDataChampions(){
@@ -18,20 +7,6 @@ async function getDataChampions(){
         const response = await fetch(urlChampions);
         if (response.ok){
             const championsData = await response.json();
-            
-           /* for(let champion of champions){
-                container +=  `<div><p>${champion.data}</p></div>`
-            }*/
-            /*
-            console.log(championsData)
-            console.log(championsData.Aatrox.name)*/
-           /* let key = Object.keys(championsData)[3];
-            let value = Object.values(championsData)[3];
-            let entree =  Object.entries(championsData)[3]*/
-           
-            // Convertir objet en tableau avec Object.entries
-                //Redonne la kley et la valeur
-            //Parcourir l'objet à partir de la 4eme entrée (data)
 
             // Récup des éléments 
             for (const element in championsData.data){ 
@@ -60,9 +35,6 @@ async function getDataChampions(){
                 cardChampion.appendChild(nameChampion);
                 cardChampion.appendChild(titleChampion);
                 cardChampion.appendChild(button);
-                
-                
-
             }
         }
     }
@@ -73,8 +45,6 @@ async function getDataChampions(){
 getDataChampions();
 // Fin de la récupération et de l'affichage des données de l'API 
 
-
-// Mise en place de la popin
 
 // Gestion de l'ouverture
 function openPopin() {
