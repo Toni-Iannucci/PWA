@@ -1,5 +1,6 @@
 let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/13.1.1/data/fr_FR/champion.json';
 let container = document.getElementById('container');
+
 let popinContainer =window.document.createElement('div');
     let popinContent = window.document.createElement('div');
     let imageChampionPopin = window.document.createElement('img');
@@ -82,7 +83,6 @@ function openPopin() {
     popinContent.appendChild(titleChampionPopin);
     popinContent.appendChild(descriptionChampionPopin);
     popinContent.appendChild(boutonFermer);
-
     popinContainer.style.display = "block";
 }
 
@@ -92,3 +92,12 @@ function closePopin(){
 
 
 boutonFermer.addEventListener("click", closePopin);
+
+// Fermer Popin quand échap
+window.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      closePopin();
+    }
+  });
+
+
