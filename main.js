@@ -91,13 +91,12 @@ function closePopin(){
 // Test pour chacune des popIn
 let buttonOpen = document.getElementsByClassName('boutonPopinOuvrir');
 console.log(buttonOpen)
-buttonOpen[0].addEventListener("click", function(){
-    console.log(open)
-});
+
+// Attendre que tout charge 
 window.onload=function(){
    
   
-for (var i = 0; i < buttons.length; i++) {
+for (var i = 0; i < buttonOpen.length; i++) {
     buttonOpen[i].addEventListener("click", function() {
         console.log('Popin Ouverte')
     })};
