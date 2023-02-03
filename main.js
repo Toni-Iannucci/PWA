@@ -1,6 +1,6 @@
 let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/13.1.1/data/fr_FR/champion.json';
 let container = document.getElementById('container');
-
+// Variables pour la popin
 let popinContainer =window.document.createElement('div');
     let popinContent = window.document.createElement('div');
     let imageChampionPopin = window.document.createElement('img');
@@ -9,7 +9,6 @@ let popinContainer =window.document.createElement('div');
     let descriptionChampionPopin = window.document.createElement('p');
     let boutonFermer =window.document.createElement('button');
 
-console.log(container)
 
 
 
@@ -41,25 +40,25 @@ async function getDataChampions(){
                 let imageChampion = window.document.createElement('img');
                 let nameChampion = window.document.createElement('h2');
                 let titleChampion = window.document.createElement('p');
-                let boutonOuvrir = window.document.createElement('button');
+                let button = window.document.createElement('button');
 
                 // Mise en place attributs
                 cardChampion.classList.add('cards');
-                boutonOuvrir.classList.add('boutonPopin');
+                button.classList.add('boutonPopinOuvrir');
                 imageChampion.alt="imageChampion";
 
                 // Mise en place des données
                 imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/${championsData.data[element].image.full}`
                 nameChampion.innerHTML= `${championsData.data[element].name}`;
                 titleChampion.innerHTML= `${championsData.data[element].title}`;
-                boutonOuvrir.innerHTML="Ouvrir";
+                button.innerHTML="Ouvrir";
 
                 // Mise en place des parents et enfants
                 container.appendChild(cardChampion);
                 cardChampion.appendChild(imageChampion);
                 cardChampion.appendChild(nameChampion);
                 cardChampion.appendChild(titleChampion);
-                cardChampion.appendChild(boutonOuvrir);
+                cardChampion.appendChild(button);
                 
                 
 
@@ -74,20 +73,36 @@ getDataChampions();
 
 function openPopin() {
  
-    popinContent.appendChild(popinContainer);
-    popinContent.appendChild(imageChampionPopin);
-    popinContent.appendChild(nameChampionPopin);
-    popinContent.appendChild(titleChampionPopin);
-    popinContent.appendChild(descriptionChampionPopin);
-    popinContent.appendChild(boutonFermer);
-    popinContainer.style.display = "block";
+    // popinContent.appendChild(popinContainer);
+    // popinContent.appendChild(imageChampionPopin);
+    // popinContent.appendChild(nameChampionPopin);
+    // popinContent.appendChild(titleChampionPopin);
+    // popinContent.appendChild(descriptionChampionPopin);
+    // popinContent.appendChild(boutonFermer);
+    // popinContainer.style.display = "block";
+    console.log('popinouverte')
 }
 
 function closePopin(){
     popinContainer.style.display = "none";
 }
 
-boutonFermer.addEventListener("click", openPopin);
+
+// Test pour chacune des popIn
+let buttonOpen = document.getElementsByClassName('boutonPopinOuvrir');
+console.log(buttonOpen)
+buttonOpen[0].addEventListener("click", function(){
+    console.log(open)
+});
+window.onload=function(){
+   
+  
+for (var i = 0; i < buttons.length; i++) {
+    buttonOpen[i].addEventListener("click", function() {
+        console.log('Popin Ouverte')
+    })};
+}
+
 boutonFermer.addEventListener("click", closePopin);
 
 // Fermer Popin quand échap
