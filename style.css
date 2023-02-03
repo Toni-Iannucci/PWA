@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    display:grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-gap: 4px;
+    justify-content: center;
+    margin: 4%;
+}
+.cards img{
+    border-radius: 50%;
+}
+.cards{
+    background-color: #023047;
+    height: 300px;
+    border-radius:20px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 4px;
+}
+.cards h2{
+    text-align: center;
+    color: white;
+}
+.cards p {
+    text-align: center;
+    color: white;
+}
