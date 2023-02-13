@@ -1,4 +1,4 @@
-let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/13.1.1/data/fr_FR/champion.json';
+let urlChampions = 'https://ddragon.leagueoflegends.com/cdn/9.19.1/data/fr_FR/champion.json';
 let container = document.getElementById('container');
 
 
@@ -25,7 +25,7 @@ async function getDataChampions(){
                 titleChampion.classList.add('title');
 
                 // Mise en place des données
-                imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/13.1.1/img/champion/${championsData.data[element].image.full}`
+                imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`
                 nameChampion.innerHTML= `${championsData.data[element].name}`;
                 titleChampion.innerHTML= `${championsData.data[element].title}`;
                 button.innerHTML="Ouvrir";
@@ -44,23 +44,25 @@ async function getDataChampions(){
         console.log(err)
     }
     window.onload=function(){
+        console.log('Document chargé')
         let cards = document.querySelectorAll('.card');
         let popin = document.getElementById('popin');
         let popinContent = document.getElementById('popinContent');
         
-        let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
+       
         let closePopinbutton =  window.document.createElement('button');
         closePopinbutton.setAttribute("id","closePopin");
         closePopinbutton.innerHTML = 'Fermer'
 
         function openPopin() {
+            let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
             popinContent.innerHTML = this.innerHTML;
             popinContent.appendChild(closePopinbutton);
             
             popin.style.display = 'block';
-            boutonOuvrir[162].style.display ='none';
+            
 
-            console.log('coucou')
+            console.log('ouvert')
         }
         function closePopin(){
             popin.style.display = 'none';
