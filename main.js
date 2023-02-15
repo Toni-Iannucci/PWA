@@ -21,6 +21,8 @@ async function getDataChampions(){
                 // Mise en place attributs
                 cardChampion.classList.add('card');
                 button.classList.add('boutonPopinOuvrir');
+                button.setAttribute('aria-haspopup','true');
+                button.setAttribute('role','button')
                 imageChampion.alt="imageChampion";
                 titleChampion.classList.add('title');
 
@@ -52,6 +54,7 @@ async function getDataChampions(){
        
         let closePopinbutton =  window.document.createElement('button');
         closePopinbutton.setAttribute("id","closePopin");
+        closePopinbutton.setAttribute("role","button");
         closePopinbutton.innerHTML = 'Fermer'
 
         function openPopin() {
