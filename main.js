@@ -22,7 +22,7 @@ async function getDataChampions(){
                 cardChampion.classList.add('card');
                 button.classList.add('boutonPopinOuvrir');
                 button.setAttribute('aria-haspopup','true');
-                button.setAttribute('role','button')
+                button.setAttribute('role','button');
                 imageChampion.alt="imageChampion";
                 titleChampion.classList.add('title');
 
@@ -33,75 +33,77 @@ async function getDataChampions(){
                 button.innerHTML="Ouvrir";
 
                 // Mise en place des parents et enfants
-                container.appendChild(cardChampion);
                 cardChampion.appendChild(imageChampion);
                 cardChampion.appendChild(nameChampion);
                 cardChampion.appendChild(titleChampion);
                 cardChampion.appendChild(button);
-                
+                container.appendChild(cardChampion);
             }
         }
     }
     catch(err){
         console.log(err)
     }
-    window.onload=function(){
-        console.log('Document chargé')
-        let cards = document.querySelectorAll('.card');
-        let popin = document.getElementById('popin');
-        let popinContent = document.getElementById('popinContent');
-        
-       
-        let closePopinbutton =  window.document.createElement('button');
-        closePopinbutton.setAttribute("id","closePopin");
-        closePopinbutton.setAttribute("role","button");
-        closePopinbutton.innerHTML = 'Fermer'
-
-        function openPopin() {
-            // let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
-            // popinContent.innerHTML = this.innerHTML;
-            // popinContent.appendChild(closePopinbutton);
-            // closePopinbutton.setAttribute("tabindex","1");
-            // popin.style.display = 'block';
-            let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
-            let copieCarte = this.cloneNode(true); // Cloner la carte
-            let boutonPopin = copieCarte.querySelector('.boutonPopinOuvrir'); // Trouver le bouton dans la copie
-            if (boutonPopin) {
-                boutonPopin.remove(); // Supprimer le bouton de la copie
-            }
-            popinContent.innerHTML = copieCarte.innerHTML; // Ajouter le contenu de la carte sans le bouton à la popin
-            popinContent.appendChild(closePopinbutton);
-            popin.style.display = 'block';
-
-            console.log('ouvert')
-        }
-        function closePopin(){
-            popin.style.display = 'none';
-        }
-        
-        // récup les élements pour chaque carte
-         cards.forEach(card => {
-            card.addEventListener('click', openPopin)
-            
-          })
-          //Fermeture de la PopIn
-          window.addEventListener("keydown", function(event) {
-                if (event.key === "Escape") {
-                    console.log('fermer')
-                   closePopin();
-                 }
-              })
-              closePopinbutton.addEventListener('click',closePopin)
-        };
-        
+    
 }
 getDataChampions();
-// Fin de la récupération et de l'affichage des données de l'API 
+
+window.onload=function(){
+console.log('Document chargé')
+let cards = document.querySelectorAll('.card');
+let popin = document.getElementById('popin');
+let popinContent = document.getElementById('popinContent');
+let boutonCards = document.querySelectorAll(".boutonPopinOuvrir");
+console.log(boutonCards)
 
 
-// Gestion de l'ouverture
+let closePopinbutton =  window.document.createElement('button');
+closePopinbutton.setAttribute("id","closePopin");
+closePopinbutton.setAttribute("role","button");
+closePopinbutton.innerHTML = 'Fermer';
+
+/**
+ * 
+ */
+function openPopin() {
+    let copieCarte = this.cloneNode(true); // Cloner la carte
+    let boutonPopin = copieCarte.querySelector('.boutonPopinOuvrir'); // Trouver le bouton dans la copie
+    if (boutonPopin) {
+        boutonPopin.remove(); // Supprimer le bouton de la copie
+    }
+    popinContent.innerHTML = copieCarte.innerHTML; // Ajouter le contenu de la carte sans le bouton à la popin
+    popinContent.appendChild(closePopinbutton);
+    popin.style.display = 'block';
+    closePopinbutton.setAttribute("tabindex","1");
+        boutonCards.forEach(boutonCard=> {
+        boutonCard.setAttribute("tabindex","-1");
+        
+        });
+    console.log('ouvert')
+}
+function closePopin(){
+    popin.style.display = 'none';
+    boutonCards.forEach(boutonCard=> {
+        boutonCard.setAttribute("tabindex","0");
+        
+        });
+    
+}
+
+// récup les élements pour chaque carte
+    cards.forEach(card => {
+    card.addEventListener('click', openPopin)
+    })
+    //Fermeture de la PopIn
+    window.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+            console.log('fermer')
+            closePopin();            
+            }
+        })
+        closePopinbutton.addEventListener('click',closePopin)
+};
+        
 
 
-
-// Fonction pour l'ouverture et la fermeture de la PopIn
 
