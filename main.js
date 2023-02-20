@@ -61,7 +61,7 @@ async function getDataChampions(){
             let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
             popinContent.innerHTML = this.innerHTML;
             popinContent.appendChild(closePopinbutton);
-            
+            closePopinbutton.setAttribute("tabindex","1");
             popin.style.display = 'block';
             
 
@@ -96,10 +96,4 @@ getDataChampions();
 
 
 // Fonction pour l'ouverture et la fermeture de la PopIn
-
-
-
-
-
-
 
