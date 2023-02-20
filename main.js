@@ -59,12 +59,14 @@ async function getDataChampions(){
 
         function openPopin() {
             let boutonOuvrir = document.getElementsByClassName('boutonPopinOuvrir');
-            popinContent.innerHTML = this.innerHTML;
+            let copieCarte = this.cloneNode(true); // Cloner la carte
+            let boutonPopin = copieCarte.querySelector('.boutonPopinOuvrir'); // Trouver le bouton dans la copie
+            if (boutonPopin) {
+                boutonPopin.remove(); // Supprimer le bouton de la copie
+            }
+            popinContent.innerHTML = copieCarte.innerHTML; // Ajouter le contenu de la carte sans le bouton à la popin
             popinContent.appendChild(closePopinbutton);
-            closePopinbutton.setAttribute("tabindex","1");
             popin.style.display = 'block';
-            
-
             console.log('ouvert')
         }
         function closePopin(){
