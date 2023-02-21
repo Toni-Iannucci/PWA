@@ -27,12 +27,15 @@ try{
             buttonCardOpen.setAttribute('aria-haspopup','true');
             buttonCardOpen.setAttribute('role','button');
             imageChampion.alt="imageChampion";
+            imageChampion.classList.add('imageChampion');
+            bigImageChampion.classList.add('bigImageChampion');
             bigImageChampion.alt="bigImageChampion"
             titleChampion.classList.add('title');
+            nameChampion.classList.add('name');
 
             // Mise en place des données
-            imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`;
-            // imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championsData.data[element].name}_0.jpg`
+             imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`;
+            bigImageChampion.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championsData.data[element].id}_0.jpg`
             
             nameChampion.innerHTML= `${championsData.data[element].name}`;
             titleChampion.innerHTML= `${championsData.data[element].title}`;
@@ -41,13 +44,18 @@ try{
 
             // Mise en place des parents et enfants
             cardChampion.appendChild(imageChampion);
+            cardChampion.appendChild(bigImageChampion);
             cardChampion.appendChild(nameChampion);
             cardChampion.appendChild(titleChampion);
             cardChampion.appendChild(buttonCardOpen);
             cardChampion.appendChild(championDescription)
             container.appendChild(cardChampion);
             championDescription.style.display = 'none';
-        }
+            imageChampion.style.display ='none';   
+            titleChampion.style.display ="none";
+            nameChampion.style.display="none";
+
+                 }
     }
 }
 catch(err){
@@ -80,9 +88,18 @@ function openPopin() {
 let copieCarte = this.cloneNode(true); // Cloner la carte
 let boutonPopinOpen = copieCarte.querySelector('.boutonPopinOuvrir'); // Trouver le bouton dans la copie
 let descriptionChampion = copieCarte.querySelector('.description');
+let imageChampion = copieCarte.querySelector('.imageChampion');
+let bigImageChampion = copieCarte.querySelector('.bigImageChampion');
+let titleChampion = copieCarte.querySelector('.title');
+let nameChampion = copieCarte.querySelector('.name');
+
 if (boutonPopinOpen) {
-    boutonPopinOpen.remove();
-    descriptionChampion.style.display = 'block'// Supprimer le bouton de la copie
+    boutonPopinOpen.remove();// Supprimer le bouton de la copie
+    descriptionChampion.style.display = 'block'
+    imageChampion.style.display ='block';
+    titleChampion.style.display ="block";
+    nameChampion.style.display="block"
+    bigImageChampion.remove();
 }
 popinContent.innerHTML = copieCarte.innerHTML; // Ajouter le contenu de la carte sans le bouton à la popin
 popinContent.appendChild(closePopinbutton);

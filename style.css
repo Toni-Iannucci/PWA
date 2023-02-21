@@ -5,29 +5,25 @@
 }
 .container{
     display:grid;
-    grid-template-columns: 1fr 1fr ;
-    grid-gap: 4px;
+    grid-template-columns: 1fr 1fr 1fr  ;
+    grid-gap: 50px;
     justify-content: center;
     margin: 4%;
 }
-.card img{
-    border-radius: 50%;
-}
+
 .card{
-    background-color: #023047;
-    height: 300px;
     border-radius:20px;
     display: grid;
     place-items: center;
-    gap: 4px;
+    gap: 30px;
 }
 .card h2{
     text-align: center;
-    color: white;
+    color: black;
 }
 .card p {
     text-align: center;
-    color: white;
+    color: black;
 }
 #popin{
     display: none;
@@ -46,13 +42,31 @@
     border: 1px solid black;
     box-shadow: 2px 2px 5px gray;
     background-color: #023047;
-    height: 300px;
-    width: 500px;
+    height: 400px;
+    width: 300px;
     border-radius:20px;
     color: white;
+}
+#popin p {
+    text-align: center;
 }
 #popinContent{
     display: grid;
     place-items: center;
-    gap: 4px;
+    gap: 12px;
+}
+.boutonPopinOuvrir{
+    font-family: monospace;
+    background-color: #f3f7fe;
+    color: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    width: 100px;
+    height: 45px;
+    transition: .3s;
+}
+.boutonPopinOuvrir:hover{
+     background-color: #3b82f6;
+  box-shadow: 0 0 0 5px #3b83f65f;
+  color: #fff;
 }
