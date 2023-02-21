@@ -17,9 +17,11 @@ try{
             let nameChampion = window.document.createElement('h2');
             let titleChampion = window.document.createElement('p');
             let buttonCardOpen = window.document.createElement('button');
+            let championDescription = window.document.createElement('p');
 
             // Mise en place attributs
             cardChampion.classList.add('card');
+            championDescription.classList.add('description');
             buttonCardOpen.classList.add('boutonPopinOuvrir');
             buttonCardOpen.setAttribute('aria-haspopup','true');
             buttonCardOpen.setAttribute('role','button');
@@ -30,6 +32,7 @@ try{
             imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`
             nameChampion.innerHTML= `${championsData.data[element].name}`;
             titleChampion.innerHTML= `${championsData.data[element].title}`;
+            championDescription.innerHTML = `${championsData.data[element].blurb}`;
             buttonCardOpen.innerHTML="Ouvrir";
 
             // Mise en place des parents et enfants
@@ -37,7 +40,9 @@ try{
             cardChampion.appendChild(nameChampion);
             cardChampion.appendChild(titleChampion);
             cardChampion.appendChild(buttonCardOpen);
+            cardChampion.appendChild(championDescription)
             container.appendChild(cardChampion);
+            championDescription.style.display = 'none';
         }
     }
 }
@@ -56,7 +61,7 @@ console.log('Document chargé'); // Vérfier que le document est bien chargé
 let cards = document.querySelectorAll('.card');
 let popin = document.getElementById('popin');
 let popinContent = document.getElementById('popinContent');
-let boutonOpenCards = document.querySelectorAll(".boutonPopinOuvrir");
+let boutonCards = document.querySelectorAll(".boutonPopinOuvrir");
 let closePopinbutton =  window.document.createElement('button');
 
 
@@ -70,12 +75,15 @@ closePopinbutton.innerHTML = 'Fermer';
 function openPopin() {
 let copieCarte = this.cloneNode(true); // Cloner la carte
 let boutonPopinOpen = copieCarte.querySelector('.boutonPopinOuvrir'); // Trouver le bouton dans la copie
+let descriptionChampion = copieCarte.querySelector('.description');
 if (boutonPopinOpen) {
-    boutonPopinOpen.remove(); // Supprimer le bouton de la copie
+    boutonPopinOpen.remove();
+    descriptionChampion.style.display = 'block'// Supprimer le bouton de la copie
 }
 popinContent.innerHTML = copieCarte.innerHTML; // Ajouter le contenu de la carte sans le bouton à la popin
 popinContent.appendChild(closePopinbutton);
 popin.style.display = 'block'; // Afficher la popin
+
 
 
 closePopinbutton.setAttribute("tabindex","1"); // Permet la tabulation direction sur le bouton Fermer
