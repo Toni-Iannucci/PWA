@@ -12,7 +12,7 @@
 }
 
 .card{
-    border-radius:20px;
+    border-radius:8px;
     display: grid;
     place-items: center;
     gap: 30px;
@@ -37,25 +37,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
     padding: 20px;
-    border: 1px solid black;
-    box-shadow: 2px 2px 5px gray;
-    background-color: #023047;
+    background-color: #135374;
     height: 400px;
-    width: 300px;
-    border-radius:20px;
+    width: 320px;
+    border-radius:8px;
     color: white;
 }
-#popin p {
-    text-align: center;
-}
+
 #popinContent{
     display: grid;
     place-items: center;
     gap: 12px;
 }
-.boutonPopinOuvrir{
+.boutonPopinOuvrir,#closePopin{
     font-family: monospace;
     background-color: #f3f7fe;
     color: #3b82f6;
@@ -64,9 +59,26 @@
     width: 100px;
     height: 45px;
     transition: .3s;
+    cursor: pointer;
 }
-.boutonPopinOuvrir:hover{
+.boutonPopinOuvrir:hover,#closePopin:hover{
      background-color: #3b82f6;
   box-shadow: 0 0 0 5px #3b83f65f;
   color: #fff;
+}
+.name,p{
+    font-family: monospace;
+}
+.title{
+    font-size: 18px;
+    font-weight: 300;
+}
+.description{
+    font-size: 12px;
+}
+.bigImageChampion{
+    border-radius: 8px;
+}
+.imageChampion{
+    border-radius: 8px;
 }
