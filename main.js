@@ -112,7 +112,6 @@ closePopinbutton.setAttribute("tabindex","1"); // Permet la tabulation direction
 // Enlever le tab sur les cards
 boutonCards.forEach(boutonCard=> {
 boutonCard.setAttribute("tabindex","-1");
-    
     });
 console.log('ouvert')
 }
