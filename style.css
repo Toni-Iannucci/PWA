@@ -82,3 +82,14 @@
 .imageChampion{
     border-radius: 8px;
 }
+
+@media screen and (max-width: 1060px){
+    .container{
+        grid-template-columns: 1fr 1fr }  ;
+}
+@media screen and (max-width: 700px){
+    .container{
+        grid-template-columns: 1fr }  ;
+}
+
+
