@@ -18,6 +18,7 @@ try{
             let titleChampion = window.document.createElement('p');
             let buttonCardOpen = window.document.createElement('button');
             let championDescription = window.document.createElement('p');
+            let bigImageChampion = window.document.createElement('img');
 
             // Mise en place attributs
             cardChampion.classList.add('card');
@@ -26,10 +27,13 @@ try{
             buttonCardOpen.setAttribute('aria-haspopup','true');
             buttonCardOpen.setAttribute('role','button');
             imageChampion.alt="imageChampion";
+            bigImageChampion.alt="bigImageChampion"
             titleChampion.classList.add('title');
 
             // Mise en place des données
-            imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`
+            imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`;
+            // imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championsData.data[element].name}_0.jpg`
+            
             nameChampion.innerHTML= `${championsData.data[element].name}`;
             titleChampion.innerHTML= `${championsData.data[element].title}`;
             championDescription.innerHTML = `${championsData.data[element].blurb}`;
