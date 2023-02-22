@@ -76,10 +76,7 @@
 .description{
     font-size: 12px;
 }
-.bigImageChampion{
-    border-radius: 8px;
-}
-.imageChampion{
+.bigImageChampion,.imageChampion{
     border-radius: 8px;
 }
 
