@@ -2,15 +2,20 @@ let urlChampions =
   "https://ddragon.leagueoflegends.com/cdn/9.19.1/data/fr_FR/champion.json";
 let container = document.getElementById("container");
 
+
 // Récupérer et Afficher les données de l'API
 async function getDataChampions() {
+  let championsData;
   try {
     const response = await fetch(urlChampions);
     if (response.ok) {
-      const championsData = await response.json();
+      championsData = await response.json();
+      console.log(championsData)
+  localStorage.setItem('championsData', JSON.stringify(championsData));
 
       // Récup des éléments
-      for (const element in championsData.data) {
+      for (const element in championsData.data){
+        const champion = championsData.data[element]
         // Création des variables et des balises
         let cardChampion = window.document.createElement("div");
         let imageChampion = window.document.createElement("img");
@@ -34,12 +39,13 @@ async function getDataChampions() {
         nameChampion.classList.add("name");
 
         // Mise en place des données
-        imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${championsData.data[element].image.full}`;
-        bigImageChampion.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${championsData.data[element].id}_0.jpg`;
-
-        nameChampion.innerHTML = `${championsData.data[element].name}`;
-        titleChampion.innerHTML = `${championsData.data[element].title}`;
-        championDescription.innerHTML = `${championsData.data[element].blurb}`;
+        
+        imageChampion.src = `http://ddragon.leagueoflegends.com/cdn/9.19.1/img/champion/${champion.image.full}`;
+        bigImageChampion.src = `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
+        
+        nameChampion.innerHTML = `${champion.name}`;
+        titleChampion.innerHTML = `${champion.title}`;
+        championDescription.innerHTML = `${champion.blurb}`;
         buttonCardOpen.innerHTML = "Ouvrir";
 
         // Mise en place des parents et enfants
@@ -60,6 +66,18 @@ async function getDataChampions() {
     console.log(err);
   }
 }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(registration => {
+        console.log('Service Worker enregistré avec succès :', registration);
+      })
+      .catch(error => {
+        console.log('Échec de l\'enregistrement du Service Worker :', error);
+      });
+  });
+}
+
 getDataChampions();
 
 window.onload = function () {
@@ -79,6 +97,7 @@ window.onload = function () {
 
   //Fonction pour ouvrir la popin
   function openPopin() {
+    console.log('popin ouverte')
     let copieCarte = this.cloneNode(true); // Cloner la carte
     let boutonPopinOpen = copieCarte.querySelector(".boutonPopinOuvrir"); // Trouver le bouton dans la copie
     let descriptionChampion = copieCarte.querySelector(".description");
